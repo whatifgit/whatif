@@ -31,7 +31,7 @@ IBM AltoroJ
 	
 		<%
 		//String query = request.getParameter("query");
-		String query = Encode.forHtml(request.getParameter("query");
+		String query = Encode.forHtml(request.getParameter("query"));
 		String[] results = null;
 		if (query != null && query.trim().length()>0)
 			results = ServletUtil.searchSite(query, request.getSession().getServletContext().getRealPath("/static/"));

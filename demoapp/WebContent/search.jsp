@@ -29,7 +29,6 @@ IBM AltoroJ
 		<%@page import="com.ibm.security.appscan.altoromutual.util.ServletUtil"%>
 	
 		<%
-		//String query = request.getParameter("query");
 		String query = request.getAttribute("query");
 		String[] results = null;
 		if (query != null && query.trim().length()>0)

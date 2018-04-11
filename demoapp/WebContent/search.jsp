@@ -27,9 +27,11 @@ IBM AltoroJ
 	<jsp:include page="toc.jspf"/>
     <td valign="top" colspan="3" class="bb">
 		<%@page import="com.ibm.security.appscan.altoromutual.util.ServletUtil"%>
+	    	<%@page import="org.owasp.encoder.Encode"%>	
 	
 		<%
-		String query = request.getParameter("query");
+		//String query = request.getParameter("query");
+		String query = Encode.forHtml(request.getParameter("query");
 		String[] results = null;
 		if (query != null && query.trim().length()>0)
 			results = ServletUtil.searchSite(query, request.getSession().getServletContext().getRealPath("/static/"));

@@ -28,10 +28,11 @@ IBM AltoroJ
     <td valign="top" colspan="3" class="bb">
 		<%@page import="com.ibm.security.appscan.altoromutual.util.ServletUtil"%>
 	    	<%@page import="org.owasp.encoder.Encode"%>	
-	
+		<%@page import="org.apache.commons.lang.StringEscapeUtils"%>
 		<%
 		//String query = request.getParameter("query");
-		String query = Encode.forHtml(request.getParameter("query"));
+		String escapedquery = Encode.forHtml(request.getParameter("query"));
+		String query = StringEscapeUtils.escapeSql(escapedquery);
 		String[] results = null;
 		if (query != null && query.trim().length()>0)
 			results = ServletUtil.searchSite(query, request.getSession().getServletContext().getRealPath("/static/"));

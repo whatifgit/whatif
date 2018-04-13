@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Build1') {
+    stage('Build12') {
       steps {
         echo 'Build Package'
       }

@@ -40,7 +40,7 @@ dependencies {
 }
 
 war {
-	archiveName 'demoapp1.war'
+	archiveName 'demoapp.war'
 	exclude 'WEB-INF/classes/**/*.class'
 	exclude 'WEB-INF/lib/**/*.jar'
 }

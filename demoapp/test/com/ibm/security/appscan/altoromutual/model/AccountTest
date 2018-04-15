@@ -1,0 +1,93 @@
+package com.ibm.security.appscan.altoromutual.model;
+
+
+import static org.junit.Assert.assertEquals;
+
+import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+
+import com.ibm.security.appscan.altoromutual.util.DBUtil;
+
+//import static org.junit.jupiter.api.Assertions.fail;
+
+//import org.junit.jupiter.api.Test;
+
+public class AccountTest {
+
+	@Test
+	public void getAccountId() {
+		// fail("Not yet implemented");
+		long accoundId = 800002;
+		String accountName = "ABCAccount";
+		double balance = 100;
+		Account account = new Account(accoundId, accountName, balance);
+		int anInt = new BigDecimal(accoundId).intValueExact();
+		account.setAccountId(anInt);
+		System.out.println(account.getAccountId());
+		assertEquals(account.getAccountId(), accoundId);
+
+	}
+
+	@Test
+	public void getAccountName() {
+		// fail("Not yet implemented");
+		long accoundId = 800002;
+		String accountName = "ABCAccount";
+		double balance = 100;
+		Account account = new Account(accoundId, accountName, balance);
+		int anInt = new BigDecimal(accoundId).intValueExact();
+		account.setAccountId(anInt);
+		assertEquals(account.getAccountName().toString(), accountName.toString());
+	}
+
+	
+	@Test
+	public void getAccountBalance() {
+		// fail("Not yet implemented");
+		long accoundId = 800002;
+		String accountName = "ABCAccount";
+		double balance = 100.0;
+		Account account = new Account(accoundId, accountName, balance);
+		int anInt = new BigDecimal(accoundId).intValueExact();
+		account.setAccountId(anInt);
+		System.out.println(account.getBalance());
+		System.out.println(balance);
+		assertEquals(account.getBalance(), balance, 0.0f);
+		
+	}
+
+	@Test
+	public void getAccounts() throws SQLException {
+		// fail("Not yet implemented");
+		DBUtil dbUtils = null;
+		List<String> expected = Arrays.asList("Savings", "Checking", "Credit Card");
+		User user = dbUtils.getUserInfo("jsmith");
+		int i=0;
+		for (Account account : user.getAccounts() ){
+			System.out.println("dsd " + account.getAccountName());
+			if (i==0)
+				assertEquals(account.getAccountName(),"Savings");
+			else if (i==1)
+				assertEquals(account.getAccountName(),"Checking");
+			else if (i==2)
+				assertEquals(account.getAccountName(),"Credit Card");
+			i++;
+			//assertThat(account.getAccountName(), contains("Savings", "Checking", "Credit Card"));
+		}
+			
+		
+	}
+	
+	@Test
+	public void isValidUser() throws SQLException {
+		// fail("Not yet implemented");
+		DBUtil dbUtils = null;
+		assertEquals(dbUtils.isValidUser("jsmith","demo1234"),true);
+		
+	}
+	
+}

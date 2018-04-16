@@ -515,13 +515,14 @@ public class DBUtil {
 		}
 		finally {
 			try {
-				pstmt.close();
+				if (pstmt !=null)
+						pstmt.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Log4AltoroJ.getInstance().logError("Error in Change password : " + e.getMessage());
 			}
 		}
 	}
+
 
 	
 	public static long storeFeedback(String name, String email, String subject, String comments) {

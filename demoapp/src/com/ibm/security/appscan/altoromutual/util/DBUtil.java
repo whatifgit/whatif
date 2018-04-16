@@ -500,7 +500,7 @@ public class DBUtil {
 		}
 	}
 	
-	public static String changePassword(String username, String password) throws SQLException {
+	public static String changePassword(String username, String password) {
 		PreparedStatement pstmt =null;
 		try {
 			Connection connection = getConnection();
@@ -514,7 +514,12 @@ public class DBUtil {
 			return e.toString();
 		}
 		finally {
-			pstmt.close();
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

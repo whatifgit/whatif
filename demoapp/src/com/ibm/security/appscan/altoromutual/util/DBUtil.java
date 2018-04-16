@@ -20,6 +20,7 @@ package com.ibm.security.appscan.altoromutual.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -502,8 +503,14 @@ public class DBUtil {
 	public static String changePassword(String username, String password) {
 		try {
 			Connection connection = getConnection();
-			Statement statement = connection.createStatement();
-			statement.execute("UPDATE PEOPLE SET PASSWORD = '"+ password +"' WHERE USER_ID = '"+username+"'");
+			String query="UPDATE PEOPLE SET PASSWORD = ? WHERE USER_ID = ?";
+			PreparedStatement pstmt = connection.prepareStatement(query);
+   			pstmt.setString(1, password);  // Compliant; PreparedStatements escape their inputs.
+   			pstmt.setString(2,username);
+   			pstmt.executeQuery();
+   			
+			//Statement statement = connection.createStatement();
+			//statement.execute("UPDATE PEOPLE SET PASSWORD = '"+ password +"' WHERE USER_ID = '"+username+"'");
 			return null;
 		} catch (SQLException e){
 			return e.toString();

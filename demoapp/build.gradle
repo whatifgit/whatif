@@ -1,4 +1,9 @@
+plugins {
+ id "org.sonarqube" version "2.5"
+}
+
 apply plugin: 'war'
+apply plugin: 'org.sonarqube'
 apply plugin: 'eclipse'
 webAppDirName = 'WebContent'
 
@@ -35,7 +40,9 @@ dependencies {
 		'com.sun.jersey:jersey-bundle:1.19',
 		'log4j:log4j:1.2.16',
 		'io.rest-assured:json-path:3.0.7',
-		'org.apache.wink:wink-json4j:1.4'
+		'org.apache.wink:wink-json4j:1.4',
+		'org.sonarsource.scanner.api:sonar-scanner-api:2.9.0.887',
+                'org.owasp.encoder:encoder:1.2'
 	providedCompile \
 		'javax:javaee-api:6.0'
 		fileTree(dir: "${webAppDirName}/WEB-INF/lib", include: '*.jar')

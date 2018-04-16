@@ -500,21 +500,21 @@ public class DBUtil {
 		}
 	}
 	
-	public static String changePassword(String username, String password) {
+	public static String changePassword(String username, String password) throws SQLException {
+		PreparedStatement pstmt =null;
 		try {
 			Connection connection = getConnection();
 			String query="UPDATE PEOPLE SET PASSWORD = ? WHERE USER_ID = ?";
-			PreparedStatement pstmt = connection.prepareStatement(query);
+			pstmt = connection.prepareStatement(query);
    			pstmt.setString(1, password);  // Compliant; PreparedStatements escape their inputs.
    			pstmt.setString(2,username);
    			pstmt.executeQuery();
-   			
-			//Statement statement = connection.createStatement();
-			//statement.execute("UPDATE PEOPLE SET PASSWORD = '"+ password +"' WHERE USER_ID = '"+username+"'");
-			return null;
+   			return null;
 		} catch (SQLException e){
 			return e.toString();
-			
+		}
+		finally {
+			pstmt.close();
 		}
 	}
 

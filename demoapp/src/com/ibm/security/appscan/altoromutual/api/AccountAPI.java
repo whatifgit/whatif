@@ -26,7 +26,7 @@ import com.ibm.security.appscan.altoromutual.util.ServletUtil;
 public class AccountAPI extends AltoroAPI {
 
 	@GET
-	@Path("/{status}")
+	@Path("/{status}/failure")
 	public Response failureRate (@PathParam("status") String status, @Context HttpServletRequest request){
 		if (status == "success")
 			return Response.status(200).entity("{\"Success\" : \"Request processed sucessfully\"}").build();

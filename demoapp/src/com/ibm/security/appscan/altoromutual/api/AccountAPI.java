@@ -25,6 +25,12 @@ import com.ibm.security.appscan.altoromutual.util.ServletUtil;
 @Path("/account")
 public class AccountAPI extends AltoroAPI {
 
+	@GET
+	public Response failureRate (@Context HttpServletRequest request ){
+		String response = "{\"Error\" : \"Error in processing request \"}";
+		return Response.status(500).entity(response).build();
+	}
+
 	// For the get method return all accounts
 	@GET
 	public Response getAccounts(@Context HttpServletRequest request) {

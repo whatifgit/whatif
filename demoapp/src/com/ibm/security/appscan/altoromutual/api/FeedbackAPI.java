@@ -86,7 +86,7 @@ public class FeedbackAPI extends AltoroAPI{
 		
 	}
 	@GET
-	@Path("generatefailure/{feedbackString}")
+	@Path("/generatefailure/{feedbackString}")
 	public Response generateFailure(@PathParam("feedbackString") String feedbackString, @Context HttpServletRequest request){		
 		if (feedbackString == "success")
 			return Response.status(200).entity("{\"Success\" : \"Request processed sucessfully\"}").build();

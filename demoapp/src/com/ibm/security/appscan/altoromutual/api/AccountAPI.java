@@ -22,16 +22,19 @@ import com.ibm.security.appscan.altoromutual.model.User;
 import com.ibm.security.appscan.altoromutual.util.DBUtil;
 import com.ibm.security.appscan.altoromutual.util.ServletUtil;
 
+
 @Path("/account")
 public class AccountAPI extends AltoroAPI {
 
 	@GET
 	@Path("/{status}/failure")
-	public Response failureRate (@PathParam("status") String status, @Context HttpServletRequest request){
-		if (status == "success")
+	public Response failureRate (@PathParam("status") String status, @Context HttpServletRequest request) throws SQLException {
+		if (status.equalsIgnoreCase("success"))
 			return Response.status(200).entity("{\"Success\" : \"Request processed sucessfully\"}").build();
-		else 
-			return Response.status(500).entity("{\"Error\" : \"Error in processing request \"}").build();
+		else {
+			Response.status(500).entity("{\"Error\" : \"Error in processing request \"}").build();
+			throw new SQLException();
+		}
 	}
 
 	// For the get method return all accounts

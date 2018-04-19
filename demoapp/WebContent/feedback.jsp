@@ -43,7 +43,7 @@ IBM AltoroJ
 		<p><b>IMPORTANT!</b> This feedback facility is not secure.  Please do not send any <br />
 		account information in a message sent from here.</p>
 		
-		<form name="cmt" method="post" action="sendFeedback">
+		<form name="cmt" method="get" action="sendFeedback">
 		
 		<!--- Dave- Hard code this into the final script - Possible security problem.
 		  Re-generated every Tuesday and old files are saved to .bak format at L:\backup\website\oldfiles    --->
